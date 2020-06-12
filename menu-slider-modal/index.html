@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Menu slider and modal demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="img/placeholder.jpg" alt="Random picture">
+        </div>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Link1IsVeryLong</a></li>
+            <li><a href="">Link2</a></li>
+            <li><a href="">Link3IsMed</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <button id="toggle" class="toggle">
+            <i class="fa fa-bars fa-2x"></i>
+        </button>
+        <h1>Landing page</h1>
+
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima libero repudiandae labore unde cumque
+            pariatur
+            quaerat laborum sapiente consequuntur. Adipisci.</p>
+
+        <button class="cta-btn" id="open">Sign up</button>
+    </header>
+
+    <div class="container">
+        <h2>Random title</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ex sapiente nam mollitia, tempore ducimus
+            voluptatibus provident saepe. Aut at nulla iste neque ratione sequi enim odio dolores nihil eaque.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quasi, quisquam ipsam commodi, tempore sit
+            vel ut nemo eaque perspiciatis ipsa officiis fugit quo, qui eum repellat? Ipsa facere, voluptates saepe
+            exercitationem dolor vel! A vel unde minus amet nesciunt!</p>
+        <h2>Random title 2</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab laudantium totam veritatis vero inventore porro
+            facere quas fugiat debitis! Recusandae explicabo officia distinctio necessitatibus doloremque provident et
+            debitis deserunt eius voluptatibus sunt facilis voluptates at blanditiis quaerat ea alias doloribus fuga
+            consequatur accusantium ipsa, incidunt assumenda, dicta laudantium. Est nisi voluptas molestias modi quaerat
+            iste suscipit nulla repellat nobis repellendus. </p>
+
+        <h2>Random title 3</h2>
+        <ul>
+            <li>Bullet 1</li>
+            <li>Bullet 2 Bullet 2</li>
+            <li>Bullet 3</li>
+        </ul>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-container" id="modal">
+        <div class="modal">
+            <button class="close-btn" id="close">
+                <i class="fa fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3>Register now !</h3>
+            </div>
+            <div class="modal-content">
+                <p>Signing up grants unlimited access to... nothing.</p>
+                <form action="" class="modal-form">
+                    <div class="form-control">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-input" placeholder="Enter username">
+                        <small>Error message</small>
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" class="form-input" placeholder="Enter email">
+                        <small>Error message</small>
+                    </div>
+                    <div class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-input" placeholder="Enter password">
+                        <small>Error message</small>
+                    </div>
+                    <div class="form-control">
+                        <label for="password2">Confirm password</label>
+                        <input type="password" id="password2" class="form-input" placeholder="Confirm password">
+                        <small>Error message</small>
+                    </div>
+                    <input type="submit" value="Submit" id="submit-btn">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
