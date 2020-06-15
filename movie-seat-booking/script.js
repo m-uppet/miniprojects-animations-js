@@ -4,6 +4,15 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
+
+const localMovieBookingInfo = JSON.parse(localStorage.getItem('movieBookingInfo'));
+
+let movieBookingInfo = localMovieBookingInfo ? localMovieBookingInfo : {}; 
+
+if (movieBookingInfo['timestamp'] < new Date()) {
+    localStorage.removeItem('movieBookingInfo');
+}
+
 populateUI();
 
 let ticketPrice = +movieSelect.value;
@@ -11,19 +20,26 @@ let ticketPrice = +movieSelect.value;
 
 // Save movie and price
 function setMovieData(index, price) {
-    localStorage.setItem('selectedMovieIndex', index);
-    localStorage.setItem('selectedMoviePrice', price);
+    movieBookingInfo['selectedMovieIndex'] = index;
+    movieBookingInfo['selectedMoviePrice'] = price;
+    localStorage.setItem('movieBookingInfo', JSON.stringify(movieBookingInfo)); 
 
 }
 
 // Update total and count
 function updateSelectedCount() {
     const selectedSeats = document.querySelectorAll('.row .seat.selected');
-    
+
     // return array of indexes of seats from the nodelist
     const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
 
-    localStorage.setItem('selectedSeats', JSON.stringify(seatsIndex));
+    // Remove local storage after 10 min
+    timestamp = new Date();
+    timestamp.setMinutes(timestamp.getMinutes() + 10);
+
+    movieBookingInfo['selectedSeats'] = seatsIndex;
+    movieBookingInfo['timestamp'] = timestamp;
+    localStorage.setItem('movieBookingInfo', JSON.stringify(movieBookingInfo)); 
 
     const selectedSeatsCount = selectedSeats.length;
     count.innerText = selectedSeatsCount;
@@ -32,7 +48,7 @@ function updateSelectedCount() {
 
 // Use data from local storage to populate UI
 function populateUI() {
-    const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+    const selectedSeats = movieBookingInfo['selectedSeats'];
 
     if (selectedSeats !== null && selectedSeats.length > 0) {
         seats.forEach((seat, index) => {
@@ -42,7 +58,7 @@ function populateUI() {
         });
     }
 
-    const selectedMovieIndex = localStorage.getItem('selectedMovieIndex');
+    const selectedMovieIndex = movieBookingInfo['selectedMovieIndex'];
     if (selectedMovieIndex !== null) {
         movieSelect.selectedIndex = selectedMovieIndex;
     }
@@ -51,7 +67,7 @@ function populateUI() {
 // Movie change event
 movieSelect.addEventListener('change', e => {
     ticketPrice = +e.target.value;
-    setMovieData(e.target.selectedIndex , e.target.value);
+    setMovieData(e.target.selectedIndex, e.target.value);
     updateSelectedCount();
 })
 
